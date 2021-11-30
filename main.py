@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QMessageBox
-from PyQt5.QtCore import QThread
 from main_ui import Ui_MainWindow
 import sys
 import os
@@ -18,19 +17,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 import pandas as pd
 import time
-
-# from apscheduler.schedulers.background import BackgroundScheduler
-#
-# def job():
-#     print('I am working...')
-#
-# sched = BackgroundScheduler()
-# sched.start()
-#
-# sched.add_job(job, 'cron', day_of_week= 3, hour= 10, minute=40, id = 'test')
-# count = 0
-# while True:
-#     time.sleep(1)
+import chromedriver_autoinstaller
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -44,12 +31,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.pushButton_7.clicked.connect(self.get_accounts)
         self.pushButton_8.clicked.connect(self.send_DMs)
 
+        self.lineEdit_2.setEchoMode(self.lineEdit_2.Password)
+        self.lineEdit_7.setEchoMode(self.lineEdit_7.Password)
+
     def send_DMs(self):
-        driver = webdriver.Chrome()
+        chrome_ver = chromedriver_autoinstaller.get_chrome_version().split('.')[0]
+        try:
+            driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
+        except:
+            chromedriver_autoinstaller.install(True)
+            driver = webdriver.Chrome(f'./{chrome_ver}/chromedriver.exe')
         driver.get('https://www.instagram.com/accounts/login/?source=auth_switcher')
         WebDriverWait(driver, 20).until(EC.element_to_be_clickable((By.NAME, "username")))
-        uid = 'contact@crowdparti.com'
-        pwd = 'eoqkr2020$!'
+        uid = self.lineEdit_6.text()
+        pwd = self.lineEdit_7.text()
         driver.find_element_by_name('username').send_keys(uid)
         driver_pwd = driver.find_element_by_name('password')
         driver_pwd.send_keys(pwd)
@@ -68,14 +63,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     pass
                 driver.find_element_by_xpath("//button[text()='메시지 보내기']").click()
                 driver.find_element_by_xpath('//input[@placeholder="검색..."]').send_keys(i)
-                WebDriverWait(driver, 20).until(
-                    EC.element_to_be_clickable((By.XPATH, "//span[@aria-label='선택 여부 변경']")))
-                driver.find_elements_by_xpath('//span[@aria-label="선택 여부 변경"]')[0].click()
+                time.sleep(3)
+                sub_window = driver.find_element_by_xpath("//div[@aria-label='새로운 메시지']")
+                sub_window.find_elements_by_tag_name('button')[2].click()
                 time.sleep(1)
                 driver.find_element_by_xpath('//div[text()="다음"]').click()
                 time.sleep(3)
-                driver.find_element_by_xpath("//input[@type='file']").send_keys(
-                    r'C:\Users\crowdparti\Downloads\크라우드파티 취급 제품 (1) (2).png')
+                # 첨부파일 넣기
+                # driver.find_element_by_xpath("//input[@type='file']").send_keys(
+                #     r'첨부파일/경로/파일명.png')
                 for part in content.split('\n'):
                     inputs = driver.find_element_by_xpath('//textarea[@placeholder="메시지 입력..."]')
                     inputs.send_keys(part)
@@ -118,9 +114,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         file = pd.read_excel(mails[0])
         try:
             for name, mail in file.values:
-                send_id = 'crowdparti@naver.com'
-                send_pwd = 'eoqkr2021$!$!'
-                context = self.plainTextEdit.toPlainText().replace('${이름}', name)
+                send_id = self.lineEdit.text()
+                send_pwd = self.lineEdit_2.text()
+                context = self.plainTextEdit.toPlainText()
 
                 smtp = smtplib.SMTP('smtp.naver.com', 587)
                 smtp.set_debuglevel(True)
@@ -131,7 +127,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 msg.set_charset('utf-8')
                 msg['From'] = send_id
                 msg['To'] = mail
-                msg['Subject'] = self.lineEdit_3.text().replace('${이름}', name)
+                msg['Subject'] = self.lineEdit_3.text()
 
                 bodyPart = MIMEText(context, 'plain', 'utf-8')
                 msg.attach(bodyPart)
@@ -156,7 +152,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                             print(e)
 
                 smtp.sendmail(send_id, mail, msg.as_string())
-                time.sleep(7)
+                time.sleep(10)
                 print(f'{name}님께 성공적으로 메일을 전송했습니다.')
         except Exception as e:
             print(e)

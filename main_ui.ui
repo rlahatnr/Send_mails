@@ -6,59 +6,40 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>939</height>
+    <width>978</width>
+    <height>1117</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_2">
-    <item row="2" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>메일</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_9">
-        <item row="4" column="0">
+        <item row="10" column="0">
          <widget class="QPlainTextEdit" name="plainTextEdit">
           <property name="plainText">
-           <string>${이름}님 안녕하세요.
-
-당사는 아빠스 수제 파스타 및 화덕 피자, 한상궁 시즈닝김 4종세트, 곰표 국수, 곰표 국물다시팩, 효천영농조합 장뇌삼, 해향유통 추석선물세트 등의
-다양한 브랜드 상품의 소셜 마케팅을 주관하고 있는 크라우드파티(주)입니다.
-자세한 내용은 첨부한 사진을 확인해주세요.
-
-현재 당사에서는 블로그 공구를 진행할 인플루언서를 모집하고 있습니다.
-현재 진행하려는 메인 제품은 아빠스의 수제 파스타 3종 (로제 파스타, 풍기크림 파스타, 볼로네제 파스타)입니다.
-아이들 간식 및 캠핑 밀키트 타겟이며, 진행중인 상품은 https://bit.ly/3rSidSy 쿠팡 링크에서 확인 가능합니다.
-
-아빠스 수제 파스타 외 제품 중에 공구를 진행하고 싶으신분들은 말씀해주시면 협의 가능합니다.
-(한상궁 시즈닝김 4종세트, 곰표 국수, 곰표 국물다시팩, 효천영농조합 장뇌삼, 해향유통 추석선물세트 등)
-기타 제품이 궁금하시다면 https://bit.ly/3fuTejo 당사 스마트스토어 링크를 확인해주세요.
-
-${이름}님께서 관심 있으시다면 좋은 조건으로 모시고자 합니다.
-당사와의 협업에 관심이 있으시다면,
-김진수 팀장 / 070-7761-7035(월~목 10:00~18:00) / contact@crowdparti.com로 문의주시면
-언제든지 제안서와 함께 답변 드리겠습니다. 감사합니다!⠀
-
-**실제 공구 진행은 정확한 실적 파악을 위해 자사몰을 사용할 수 있습니다.</string>
+           <string/>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="label_6">
+        <item row="11" column="0">
+         <widget class="QPushButton" name="pushButton_5">
           <property name="text">
-           <string>메일 제목</string>
+           <string>메일 전송</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="0">
+        <item row="6" column="0">
          <layout class="QGridLayout" name="gridLayout_3">
           <item row="3" column="1" colspan="4">
            <widget class="QLabel" name="label_5">
@@ -111,25 +92,66 @@ ${이름}님께서 관심 있으시다면 좋은 조건으로 모시고자 합�
           </item>
          </layout>
         </item>
-        <item row="5" column="0">
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="text">
-           <string>메일 전송</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLineEdit" name="lineEdit_3">
-          <property name="text">
-           <string>${이름}님 안녕하세요. 공구 제안드립니다.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
+        <item row="9" column="0">
          <widget class="QLabel" name="label_3">
           <property name="text">
            <string>메일 내용</string>
           </property>
+         </widget>
+        </item>
+        <item row="8" column="0">
+         <widget class="QLineEdit" name="lineEdit_3">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item row="7" column="0">
+         <widget class="QLabel" name="label_6">
+          <property name="text">
+           <string>메일 제목</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>계정정보</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <item>
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>네이버 이메일</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit">
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_2">
+             <property name="text">
+              <string>비밀번호</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_2">
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
@@ -139,14 +161,7 @@ ${이름}님께서 관심 있으시다면 좋은 조건으로 모시고자 합�
         <string>인스타DM</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_6">
-        <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton_8">
-          <property name="text">
-           <string>DM 전송</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
+        <item row="1" column="0">
          <layout class="QGridLayout" name="gridLayout_5">
           <item row="1" column="0">
            <widget class="QPushButton" name="pushButton_7">
@@ -176,27 +191,66 @@ ${이름}님께서 관심 있으시다면 좋은 조건으로 모시고자 합�
           </item>
          </layout>
         </item>
-        <item row="1" column="0">
+        <item row="2" column="0">
          <widget class="QLabel" name="label_8">
           <property name="text">
            <string>DM 내용</string>
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="4" column="0">
+         <widget class="QPushButton" name="pushButton_8">
+          <property name="text">
+           <string>DM 전송</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
          <widget class="QPlainTextEdit" name="plainTextEdit_2">
           <property name="plainText">
-           <string>${이름}님 안녕하세요.
-
-당사는 아빠스 수제 파스타 및 화덕 피자, 한상궁 시즈닝김 4종세트, 곰표 국수, 곰표 국물다시팩, 효천영농조합 장뇌삼, 해향유통 추석선물세트 등의 다양한 브랜드 상품의 소셜 마케팅을 주관하고 있는 크라우드파티(주)입니다. 자세한 내용은 첨부한 사진을 확인해주세요.
-
-현재 당사에서는 인스타 공구를 진행할 인플루언서를 모집하고 있습니다. 현재 진행하려는 메인 제품은 아빠스의 수제 파스타 3종 (로제 파스타, 풍기크림 파스타, 볼로네제 파스타)입니다. 아이들 간식 및 캠핑 밀키트 타겟이며, 진행중인 상품은 https://bit.ly/3rSidSy 쿠팡 링크에서 확인 가능합니다.
-
-아빠스 수제 파스타 외 제품 중에 공구를 진행하고 싶으신분들은 말씀해주시면 협의 가능합니다.(한상궁 시즈닝김 4종세트, 곰표 국수, 곰표 국물다시팩, 효천영농조합 장뇌삼, 해향유통 추석선물세트 등) 기타 제품이 궁금하시다면 https://bit.ly/3fuTejo 당사 스마트스토어 링크를 확인해주세요.
-
-${이름}님께서 관심 있으시다면 좋은 조건으로 모시고자 합니다. 당사와의 협업에 관심이 있으시다면, 김진수 팀장 / 070-7761-7035(월~목 10:00~18:00) / contact@crowdparti.com로 문의주시면 언제든지 제안서와 함께 답변 드리겠습니다. 감사합니다!⠀
-**실제 공구 진행은 정확한 실적 파악을 위해 자사몰을 사용할 수 있습니다.</string>
+           <string/>
           </property>
+         </widget>
+        </item>
+        <item row="0" column="0">
+         <widget class="QGroupBox" name="groupBox_3">
+          <property name="title">
+           <string>계정정보</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>인스타 아이디</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_6">
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_11">
+             <property name="text">
+              <string>비밀번호</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_7">
+             <property name="font">
+              <font>
+               <pointsize>13</pointsize>
+              </font>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
         </item>
        </layout>
